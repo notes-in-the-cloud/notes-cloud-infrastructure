@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: todo-service
-          image: hristo12319/notes-cloud-todo-service:latest
+          image: hristo12319/notes-cloud-todo-service:v1
           imagePullPolicy: IfNotPresent
 
           ports:
@@ -44,7 +44,7 @@ spec:
 
           livenessProbe:
             httpGet:
-              path: /actuator/health
+              path: /actuator/health/liveness
               port: 8085
             initialDelaySeconds: 30
             periodSeconds: 20
