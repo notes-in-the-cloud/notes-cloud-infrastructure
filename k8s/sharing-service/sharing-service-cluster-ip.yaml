@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sharing-service
+  namespace: notes-cloud
+  labels:
+    app: sharing-service
+    app.kubernetes.io/name: sharing-service
+    app.kubernetes.io/part-of: notes-cloud-platform
+spec:
+  type: ClusterIP
+  selector:
+    app: sharing-service
+  ports:
+    - name: http
+      port: 8083
+      targetPort: 8083
+      protocol: TCP

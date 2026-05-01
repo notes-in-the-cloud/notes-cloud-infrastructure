@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sharing-service-config
+  namespace: notes-cloud
+  labels:
+    app: sharing-service
+    app.kubernetes.io/name: sharing-service
+    app.kubernetes.io/part-of: notes-cloud-platform
+data:
+  SPRING_APPLICATION_NAME: "sharing-service"
+  SPRING_PROFILES_ACTIVE: "local"
+  SERVER_PORT: "8083"

@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sharing-service
+  namespace: notes-cloud
+  labels:
+    app: sharing-service
+    app.kubernetes.io/name: sharing-service
+    app.kubernetes.io/part-of: notes-cloud-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sharing-service
+  template:
+    metadata:
+      labels:
+        app: sharing-service
+        app.kubernetes.io/name: sharing-service
+        app.kubernetes.io/part-of: notes-cloud-platform
+    spec:
+      containers:
+        - name: sharing-service
+          image: notes-cloud-sharing-service:local
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - name: http
+              containerPort: 8083
+              protocol: TCP
+
+          envFrom:
+            - configMapRef:
+                name: sharing-service-config
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8083
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8083
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi

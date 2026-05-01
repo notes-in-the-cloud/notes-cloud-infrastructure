@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reminder-service
+  namespace: notes-cloud
+  labels:
+    app: reminder-service
+    app.kubernetes.io/name: reminder-service
+    app.kubernetes.io/part-of: notes-cloud-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reminder-service
+  template:
+    metadata:
+      labels:
+        app: reminder-service
+        app.kubernetes.io/name: reminder-service
+        app.kubernetes.io/part-of: notes-cloud-platform
+    spec:
+      containers:
+        - name: reminder-service
+          image: notes-cloud-reminder-service:local
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - name: http
+              containerPort: 8084
+              protocol: TCP
+
+          envFrom:
+            - configMapRef:
+                name: reminder-service-config
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8084
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8084
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi

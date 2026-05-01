@@ -1,0 +1,117 @@
+# =========================
+# IDEs / Editors
+# =========================
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# =========================
+# macOS / Windows
+# =========================
+.DS_Store
+.AppleDouble
+.LSOverride
+__MACOSX/
+Thumbs.db
+Desktop.ini
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Environment files
+# Keep examples committed
+# =========================
+.env
+.env.*
+!.env.example
+!.env.template
+
+# =========================
+# Docker / local archives
+# =========================
+*.tar
+*.tar.gz
+*.zip
+
+# =========================
+# Kubernetes generated/local files
+# =========================
+kubeconfig*
+*.kubeconfig
+.secrets/
+tmp/
+
+# =========================
+# Node / React frontend
+# =========================
+node_modules/
+dist/
+build/
+coverage/
+.vite/
+
+# =========================
+# Go
+# =========================
+bin/
+*.test
+*.out
+coverage.out
+
+# =========================
+# Java / Maven / Spring Boot
+# =========================
+target/
+.mvn/wrapper/maven-wrapper.jar
+
+# Keep Maven wrapper files
+!mvnw
+!mvnw.cmd
+!.mvn/wrapper/maven-wrapper.properties
+
+# =========================
+# .NET / C#
+# =========================
+bin/
+obj/
+TestResults/
+*.user
+*.suo
+*.rsuser
+
+# =========================
+# Python / utility scripts
+# =========================
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# =========================
+# Terraform, if added later
+# =========================
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+crash.log
+crash.*.log
+
+# =========================
+# Local database/data files
+# =========================
+*.db
+*.sqlite
+*.sqlite3
+postgres-data/
+data/

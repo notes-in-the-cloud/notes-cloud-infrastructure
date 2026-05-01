@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: migrations-config
+  namespace: notes-cloud
+  labels:
+    app: migrations
+    app.kubernetes.io/name: migrations
+    app.kubernetes.io/part-of: notes-cloud-platform
+data:
+  DB_HOST: "postgres"
+  DB_PORT: "5432"
+  POSTGRES_DB: "notes_cloud"
+  POSTGRES_USER: "notes_cloud_user"
