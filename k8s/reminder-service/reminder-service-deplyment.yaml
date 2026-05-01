@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: reminder-service
-          image: hristo12319/notes-cloud-reminder-service:latest
+          image: hristo12319/notes-cloud-reminder-service:v1
           imagePullPolicy: IfNotPresent
 
           ports:
