@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: auth-service
-          image: hristo12319/notes-cloud-auth-service:latest
+          image: hristo12319/notes-cloud-auth-service:v1
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
