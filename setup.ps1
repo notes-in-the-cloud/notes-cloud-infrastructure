@@ -61,7 +61,7 @@ function Install-Manifests {
     kubectl apply -f (Join-Path $K8sDir "migrations")
 
     # 5. Deploy services
-    $services = @("auth-service", "reminder-service", "todo-service")
+    $services = @("auth-service", "reminder-service", "todo-service", "sharing-service")
     foreach ($service in $services) {
         $servicePath = Join-Path $K8sDir $service
         if (Test-Path $servicePath) {
