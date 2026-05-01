@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-service
+  namespace: notes-cloud
+  labels:
+    app: notes-service
+    app.kubernetes.io/name: notes-service
+    app.kubernetes.io/part-of: notes-cloud-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notes-service
+  template:
+    metadata:
+      labels:
+        app: notes-service
+        app.kubernetes.io/name: notes-service
+        app.kubernetes.io/part-of: notes-cloud-platform
+    spec:
+      containers:
+        - name: notes-service
+          image: notes-cloud-notes-service:local
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - name: http
+              containerPort: 8082
+              protocol: TCP
+
+          envFrom:
+            - configMapRef:
+                name: notes-service-config
+
+          readinessProbe:
+            httpGet:
+              path: /api/users/1/notes
+              port: 8082
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          livenessProbe:
+            httpGet:
+              path: /api/users/1/notes
+              port: 8082
+            initialDelaySeconds: 20
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi

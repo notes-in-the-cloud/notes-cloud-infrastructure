@@ -1,0 +1,50 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: notes-cloud-migrations
+  namespace: notes-cloud
+  labels:
+    app: migrations
+    app.kubernetes.io/name: migrations
+    app.kubernetes.io/part-of: notes-cloud-platform
+spec:
+  backoffLimit: 3
+  activeDeadlineSeconds: 300
+  ttlSecondsAfterFinished: 300
+
+  template:
+    metadata:
+      labels:
+        app: migrations
+        app.kubernetes.io/name: migrations
+        app.kubernetes.io/part-of: notes-cloud-platform
+    spec:
+      restartPolicy: Never
+
+      containers:
+        - name: migrations
+          image: notes-cloud-migrations:local
+          imagePullPolicy: IfNotPresent
+
+          envFrom:
+            - configMapRef:
+                name: migrations-config
+            - secretRef:
+                name: postgres-secret
+
+          command:
+            - /bin/sh
+            - -c
+
+          args:
+            - |
+              set -e
+
+              echo "Running database migrations..."
+
+              migrate \
+                -path /migrations \
+                -database "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOST}:${DB_PORT}/${POSTGRES_DB}?sslmode=disable" \
+                up
+
+              echo "Database migrations completed successfully."

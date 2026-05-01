@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: notes-cloud
+  labels:
+    name: notes-cloud
+    app.kubernetes.io/name: notes-cloud
+    app.kubernetes.io/part-of: notes-cloud-platform

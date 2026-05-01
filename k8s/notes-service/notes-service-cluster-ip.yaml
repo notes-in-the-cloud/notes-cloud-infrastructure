@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: notes-service
+  namespace: notes-cloud
+  labels:
+    app: notes-service
+    app.kubernetes.io/name: notes-service
+    app.kubernetes.io/part-of: notes-cloud-platform
+spec:
+  type: ClusterIP
+  selector:
+    app: notes-service
+  ports:
+    - name: http
+      port: 8082
+      targetPort: 8082
+      protocol: TCP
