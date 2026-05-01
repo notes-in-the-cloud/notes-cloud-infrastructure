@@ -23,7 +23,7 @@ spec:
 
       containers:
         - name: migrations
-          image: notes-cloud-migrations:local
+          image: hristo12319/notes-cloud-migrations:latest
           imagePullPolicy: IfNotPresent
 
           envFrom:

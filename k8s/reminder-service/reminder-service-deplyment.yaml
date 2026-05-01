@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: reminder-service
-          image: notes-cloud-reminder-service:local
+          image: hristo12319/notes-cloud-reminder-service:latest
           imagePullPolicy: IfNotPresent
 
           ports:
@@ -35,7 +35,7 @@ spec:
 
           readinessProbe:
             httpGet:
-              path: /actuator/health
+              path: /api/healthz
               port: 8084
             initialDelaySeconds: 20
             periodSeconds: 10
@@ -44,7 +44,7 @@ spec:
 
           livenessProbe:
             httpGet:
-              path: /actuator/health
+              path: /api/readyz
               port: 8084
             initialDelaySeconds: 30
             periodSeconds: 20

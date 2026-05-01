@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: todo-service
-          image: notes-cloud-todo-service:local
+          image: hristo12319/notes-cloud-todo-service:latest
           imagePullPolicy: IfNotPresent
 
           ports:

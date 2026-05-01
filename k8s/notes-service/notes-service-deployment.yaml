@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: notes-service
-          image: notes-cloud-notes-service:local
+          image: hristo12319/notes-cloud-notes-service:latest
           imagePullPolicy: IfNotPresent
 
           ports:

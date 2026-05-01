@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: auth-service
-          image: notes-cloud-auth-service:local
+          image: hristo12319/notes-cloud-auth-service:latest
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -44,14 +44,14 @@ spec:
 
           readinessProbe:
             httpGet:
-              path: /readyz
+              path: /authService/api/v1/readyz
               port: 8081
             initialDelaySeconds: 5
             periodSeconds: 10
 
           livenessProbe:
             httpGet:
-              path: /healthz
+              path: /authService/api/v1/healthz
               port: 8081
             initialDelaySeconds: 10
             periodSeconds: 20
