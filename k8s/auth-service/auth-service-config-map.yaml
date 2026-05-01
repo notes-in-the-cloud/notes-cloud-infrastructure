@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-service-config
+  namespace: notes-cloud
+  labels:
+    app: auth-service
+    app.kubernetes.io/name: auth-service
+    app.kubernetes.io/part-of: notes-cloud-platform
+data:
+  config.json: |
+    {
+      "database": {
+        "host": "postgres",
+        "port": 5432,
+        "dbname": "notes_cloud",
+        "user": "notes_cloud_user",
+        "sslmode": "disable"
+      }
+    }

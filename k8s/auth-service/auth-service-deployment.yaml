@@ -28,16 +28,30 @@ spec:
               containerPort: 8081
               protocol: TCP
 
+          env:
+            - name: CONFIG_FILE
+              value: "/etc/config/config.json"
+            - name: DB_PASSWORD_FILE
+              value: "/etc/secrets/db-password"
+
+          volumeMounts:
+            - name: config
+              mountPath: /etc/config
+              readOnly: true
+            - name: secrets
+              mountPath: /etc/secrets
+              readOnly: true
+
           readinessProbe:
             httpGet:
-              path: /authService/api/v1/hello-world
+              path: /readyz
               port: 8081
             initialDelaySeconds: 5
             periodSeconds: 10
 
           livenessProbe:
             httpGet:
-              path: /authService/api/v1/hello-world
+              path: /healthz
               port: 8081
             initialDelaySeconds: 10
             periodSeconds: 20
@@ -49,3 +63,11 @@ spec:
             limits:
               cpu: 250m
               memory: 128Mi
+
+      volumes:
+        - name: config
+          configMap:
+            name: auth-service-config
+        - name: secrets
+          secret:
+            secretName: auth-service-secret
