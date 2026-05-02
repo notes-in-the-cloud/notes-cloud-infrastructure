@@ -8,13 +8,11 @@ metadata:
     app.kubernetes.io/name: auth-service
     app.kubernetes.io/part-of: notes-cloud-platform
 data:
-  config.json: |
-    {
-      "database": {
-        "host": "postgres",
-        "port": 5432,
-        "dbname": "notes_cloud",
-        "user": "notes_cloud_user",
-        "sslmode": "disable"
-      }
-    }
+  DB_HOST: "postgres"
+  DB_PORT: "5432"
+  DB_USER: "notes_cloud_user"
+  DB_NAME: "notes_cloud"
+  DB_SSLMODE: "disable"
+  JWT_ISSUER: "notes-cloud"
+  JWT_AUDIENCE: "notes-cloud"
+  JWT_TTL: "15m"

@@ -28,19 +28,11 @@ spec:
               containerPort: 8081
               protocol: TCP
 
-          env:
-            - name: CONFIG_FILE
-              value: "/etc/config/config.json"
-            - name: DB_PASSWORD_FILE
-              value: "/etc/secrets/db-password"
-
-          volumeMounts:
-            - name: config
-              mountPath: /etc/config
-              readOnly: true
-            - name: secrets
-              mountPath: /etc/secrets
-              readOnly: true
+          envFrom:
+            - configMapRef:
+                name: auth-service-config
+            - secretRef:
+                name: auth-service-secret
 
           readinessProbe:
             httpGet:
@@ -63,11 +55,3 @@ spec:
             limits:
               cpu: 250m
               memory: 128Mi
-
-      volumes:
-        - name: config
-          configMap:
-            name: auth-service-config
-        - name: secrets
-          secret:
-            secretName: auth-service-secret
