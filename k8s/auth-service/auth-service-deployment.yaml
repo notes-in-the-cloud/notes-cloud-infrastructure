@@ -1,57 +1,70 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-service
+  name: todo-service
   namespace: notes-cloud
   labels:
-    app: auth-service
-    app.kubernetes.io/name: auth-service
+    app: todo-service
+    app.kubernetes.io/name: todo-service
     app.kubernetes.io/part-of: notes-cloud-platform
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: auth-service
+      app: todo-service
   template:
     metadata:
       labels:
-        app: auth-service
-        app.kubernetes.io/name: auth-service
+        app: todo-service
+        app.kubernetes.io/name: todo-service
         app.kubernetes.io/part-of: notes-cloud-platform
     spec:
       containers:
-        - name: auth-service
-          image: hristo12319/notes-cloud-auth-service:v1
-          imagePullPolicy: IfNotPresent
+        - name: todo-service
+          image: hristo12319/notes-cloud-todo-service:v1
+          imagePullPolicy: Always
+
           ports:
             - name: http
-              containerPort: 8081
+              containerPort: 8085
               protocol: TCP
 
           envFrom:
             - configMapRef:
-                name: auth-service-config
+                name: todo-service-config
+            - configMapRef:
+                name: postgres-config
             - secretRef:
-                name: auth-service-secret
+                name: postgres-secret
+
+          env:
+            - name: DB_HOST
+              value: postgres
+            - name: DB_PORT
+              value: "5432"
 
           readinessProbe:
             httpGet:
-              path: /authService/api/v1/readyz
-              port: 8081
-            initialDelaySeconds: 5
+              path: /actuator/health
+              port: 8085
+            initialDelaySeconds: 20
             periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
 
           livenessProbe:
             httpGet:
-              path: /authService/api/v1/healthz
-              port: 8081
-            initialDelaySeconds: 10
+              path: /actuator/health/liveness
+              port: 8085
+            initialDelaySeconds: 30
             periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
 
           resources:
             requests:
-              cpu: 50m
-              memory: 64Mi
+              cpu: 100m
+              memory: 256Mi
             limits:
-              cpu: 250m
-              memory: 128Mi
+              cpu: 500m
+              memory: 512Mi
