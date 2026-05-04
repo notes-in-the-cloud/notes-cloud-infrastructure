@@ -22,7 +22,7 @@ spec:
       containers:
         - name: todo-service
           image: hristo12319/notes-cloud-todo-service:v1
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
 
           ports:
             - name: http
@@ -32,6 +32,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: todo-service-config
+            - secretRef:
+                name: todo-service-secret
 
           readinessProbe:
             httpGet:
