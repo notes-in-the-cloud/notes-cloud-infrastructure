@@ -32,6 +32,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: todo-service-config
+            - secretRef:
+                name: todo-service-secret
 
           readinessProbe:
             httpGet:
