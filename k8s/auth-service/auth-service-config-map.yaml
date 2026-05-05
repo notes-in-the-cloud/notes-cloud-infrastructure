@@ -16,3 +16,22 @@ data:
   JWT_ISSUER: "notes-cloud"
   JWT_AUDIENCE: "notes-cloud"
   JWT_TTL: "15m"
+
+  # ----- Auth providers -----
+  # Convention: OIDC_<PROVIDER_NAME>_<FIELD>
+  # Adding a new provider = add a new block here + matching keys in the Secret.
+  # No code changes required.
+
+  # Google (OIDC)
+  OIDC_GOOGLE_ENABLED: "true"
+  OIDC_GOOGLE_PROVIDER_TYPE: "google"
+  OIDC_GOOGLE_ISSUER_URL: "https://accounts.google.com"
+  OIDC_GOOGLE_REDIRECT_URL: "http://localhost:8081/authService/api/v1/auth/google/callback"
+  OIDC_GOOGLE_SCOPES: "openid,email,profile"
+
+  # GitLab (OIDC)
+  OIDC_GITLAB_ENABLED: "true"
+  OIDC_GITLAB_PROVIDER_TYPE: "gitlab"
+  OIDC_GITLAB_ISSUER_URL: "https://gitlab.com"
+  OIDC_GITLAB_REDIRECT_URL: "http://localhost:8081/authService/api/v1/auth/gitlab/callback"
+  OIDC_GITLAB_SCOPES: "openid,email,profile"
