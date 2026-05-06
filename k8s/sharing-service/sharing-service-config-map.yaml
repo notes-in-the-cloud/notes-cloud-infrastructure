@@ -11,3 +11,13 @@ data:
   SPRING_APPLICATION_NAME: "sharing-service"
   SPRING_PROFILES_ACTIVE: "local"
   SERVER_PORT: "8083"
+
+  DB_HOST: "postgres"
+  DB_PORT: "5432"
+  POSTGRES_DB: "notes_cloud"
+  POSTGRES_USER: "notes_cloud_user"
+
+  SPRING_JPA_HIBERNATE_DDL_AUTO: "validate"
+
+  NOTES_SERVICE_URL: "http://notes-service:8082"
+  SHARING_PUBLIC_BASE_URL: "http://sharing-service:8083"
