@@ -32,6 +32,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: sharing-service-config
+            - secretRef:
+                name: sharing-service-secret
 
           readinessProbe:
             httpGet:
