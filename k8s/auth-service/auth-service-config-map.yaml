@@ -37,7 +37,7 @@ data:
   OIDC_GITLAB_SCOPES: "openid,email,profile"
 
   # ----- Email service -----
-  RESEND_FROM_EMAIL: "onboarding@resend.dev"
+  RESEND_FROM_EMAIL: "Notes Cloud <no-reply@notes-cloud.org>"
 
   # ----- Backend services -----
   NOTES_SERVICE_URL: "http://notes-service:8082"
