@@ -22,7 +22,7 @@ spec:
       containers:
         - name: sharing-service
           image: hristo12319/notes-cloud-sharing-service:v1
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
 
           ports:
             - name: http

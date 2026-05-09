@@ -21,8 +21,8 @@ spec:
     spec:
       containers:
         - name: notes-service
-          image: hristo12319/notes-cloud-notes-service:latest
-          imagePullPolicy: IfNotPresent
+          image: hristo12319/notes-cloud-notes-service:v1
+          imagePullPolicy: Always
 
           ports:
             - name: http
@@ -35,7 +35,7 @@ spec:
 
           readinessProbe:
             httpGet:
-              path: /api/users/1/notes
+              path: /api/readyz
               port: 8082
             initialDelaySeconds: 10
             periodSeconds: 10
@@ -44,7 +44,7 @@ spec:
 
           livenessProbe:
             httpGet:
-              path: /api/users/1/notes
+              path: /api/healthz
               port: 8082
             initialDelaySeconds: 20
             periodSeconds: 20
