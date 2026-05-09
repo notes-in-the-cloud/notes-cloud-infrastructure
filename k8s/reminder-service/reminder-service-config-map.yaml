@@ -8,4 +8,11 @@ metadata:
     app.kubernetes.io/name: reminder-service
     app.kubernetes.io/part-of: notes-cloud-platform
 data:
-  SPRING_PROFILES_ACTIVE: "local"
+  SPRING_APPLICATION_NAME: "reminder-service"
+  SPRING_PROFILES_ACTIVE: "prod"
+  SERVER_PORT: "8084"
+
+  DB_HOST: "postgres"
+  DB_PORT: "5432"
+  POSTGRES_DB: "notes_cloud"
+  POSTGRES_USER: "notes_cloud_user"
