@@ -35,3 +35,6 @@ data:
   OIDC_GITLAB_ISSUER_URL: "https://gitlab.com"
   OIDC_GITLAB_REDIRECT_URL: "http://localhost:8081/authService/api/v1/auth/gitlab/callback"
   OIDC_GITLAB_SCOPES: "openid,email,profile"
+
+  # ----- Email service -----
+  RESEND_FROM_EMAIL: "onboarding@resend.dev"
