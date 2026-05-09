@@ -135,7 +135,8 @@ function Install-Manifests {
         "auth-service",
         "reminder-service",
         "todo-service",
-        "sharing-service"
+        "sharing-service",
+        "notes-service"
     )
 
     foreach ($service in $services) {
