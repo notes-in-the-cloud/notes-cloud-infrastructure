@@ -32,6 +32,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: notes-service-config
+            - secretRef:
+                name: notes-service-secret
 
           readinessProbe:
             httpGet:
