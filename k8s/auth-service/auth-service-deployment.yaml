@@ -22,7 +22,7 @@ spec:
       containers:
         - name: auth-service
           image: hristo12319/notes-cloud-auth-service:v1
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - name: http
               containerPort: 8081
