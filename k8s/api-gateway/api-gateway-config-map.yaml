@@ -18,5 +18,3 @@ data:
 
   FRONTEND_ORIGIN: "http://localhost:5173"
   ALLOWED_ORIGINS: "http://localhost:5173,http://localhost:3000,http://localhost:4173"
-
-  JWT_VALIDATION_URL: "http://auth-service:8080/internal/auth/validate"

@@ -35,9 +35,3 @@ data:
 
   # ----- Email service -----
   RESEND_FROM_EMAIL: "Notes Cloud <no-reply@notes-cloud.org>"
-
-  # ----- Backend services -----
-  NOTES_SERVICE_URL: "http://notes-service:8082"
-  TODO_SERVICE_URL: "http://todo-service:8085"
-  REMINDER_SERVICE_URL: "http://reminder-service:8084"
-  SHARING_SERVICE_URL: "http://sharing-service:8083"
