@@ -39,6 +39,13 @@ spec:
             - secretRef:
                 name: api-gateway-secret
 
+          env:
+            - name: INTERNAL_SERVICE_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: internal-token-secret
+                  key: INTERNAL_SERVICE_TOKEN
+
           readinessProbe:
             httpGet:
               path: /api/readyz

@@ -35,6 +35,16 @@ spec:
             - secretRef:
                 name: reminder-service-secret
 
+          env:
+            - name: GATEWAY_BASE_URL
+              value: "http://api-gateway:8090"
+
+            - name: GATEWAY_INTERNAL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: internal-token-secret
+                  key: INTERNAL_SERVICE_TOKEN
+
           readinessProbe:
             httpGet:
               path: /api/readyz
