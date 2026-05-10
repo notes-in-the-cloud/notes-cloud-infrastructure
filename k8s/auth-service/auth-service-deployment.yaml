@@ -31,8 +31,12 @@ spec:
           envFrom:
             - configMapRef:
                 name: auth-service-config
+            - configMapRef:
+                name: jwt-config
             - secretRef:
                 name: auth-service-secret
+            - secretRef:
+                name: jwt-secret
 
           readinessProbe:
             httpGet:
