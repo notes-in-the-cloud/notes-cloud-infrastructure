@@ -32,8 +32,10 @@ spec:
           envFrom:
             - configMapRef:
                 name: api-gateway-config
+            - configMapRef:
+                name: jwt-config
             - secretRef:
-                name: api-gateway-secret
+                name: jwt-secret
 
           readinessProbe:
             httpGet:
