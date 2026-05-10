@@ -147,7 +147,8 @@ function Install-Manifests {
         "reminder-service",
         "todo-service",
         "sharing-service",
-        "notes-service"
+        "notes-service",
+        "api-gateway"
     )
 
     foreach ($service in $services) {

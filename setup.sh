@@ -68,7 +68,7 @@ apply_manifests() {
     fi
 
     # 6. Deploy services
-    for service in auth-service reminder-service todo-service sharing-service notes-service; do
+    for service in auth-service reminder-service todo-service sharing-service notes-service api-gateway; do
         if [ -d "$K8S_DIR/$service" ]; then
             log_info "Deploying $service..."
             kubectl apply -f "$K8S_DIR/$service/"
