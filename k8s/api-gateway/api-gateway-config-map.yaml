@@ -10,7 +10,7 @@ metadata:
 data:
   SERVER_PORT: "8090"
 
-  AUTH_SERVICE_URL: "http://auth-service:8080"
+  AUTH_SERVICE_URL: "http://auth-service:8081"
   NOTES_SERVICE_URL: "http://notes-service:8082"
   TODO_SERVICE_URL: "http://todo-service:8085"
   REMINDER_SERVICE_URL: "http://reminder-service:8084"

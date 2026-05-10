@@ -23,7 +23,7 @@ data:
   OIDC_GOOGLE_ENABLED: "true"
   OIDC_GOOGLE_PROVIDER_TYPE: "google"
   OIDC_GOOGLE_ISSUER_URL: "https://accounts.google.com"
-  OIDC_GOOGLE_REDIRECT_URL: "http://localhost:8081/authService/api/v1/auth/google/callback"
+  OIDC_GOOGLE_REDIRECT_URL: "http://localhost:8090/api/v1/auth/google/callback"
   OIDC_GOOGLE_SCOPES: "openid,email,profile"
 
   # GitLab (OIDC)
