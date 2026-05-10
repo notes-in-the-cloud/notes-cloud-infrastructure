@@ -36,6 +36,8 @@ spec:
                 name: jwt-config
             - secretRef:
                 name: jwt-secret
+            - secretRef:
+                name: api-gateway-secret
 
           readinessProbe:
             httpGet:
