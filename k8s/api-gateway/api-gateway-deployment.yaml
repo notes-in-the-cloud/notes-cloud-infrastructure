@@ -36,8 +36,6 @@ spec:
                 name: jwt-config
             - secretRef:
                 name: jwt-secret
-            - secretRef:
-                name: api-gateway-secret
 
           env:
             - name: INTERNAL_SERVICE_TOKEN
