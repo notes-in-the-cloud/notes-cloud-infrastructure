@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  namespace: notes-cloud
+  labels:
+    app: frontend
+    app.kubernetes.io/name: frontend
+    app.kubernetes.io/part-of: notes-cloud-platform
+data:
+  config.js: |
+    window.__APP_CONFIG__ = {
+        API_BASE_URL: "http://gateway-service:8090",
+        WS_REMINDERS_URL: "ws://gateway-service:8090/ws/reminders"
+    };
