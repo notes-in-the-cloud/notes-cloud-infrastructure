@@ -39,6 +39,9 @@ spec:
             - name: GATEWAY_BASE_URL
               value: "http://api-gateway:8090"
 
+            - name: REMINDER_TIMEZONE
+              value: "Europe/Sofia"
+
             - name: GATEWAY_INTERNAL_TOKEN
               valueFrom:
                 secretKeyRef:
