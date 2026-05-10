@@ -61,7 +61,13 @@ apply_manifests() {
     log_info "Running migrations..."
     kubectl apply -f "$K8S_DIR/migrations/"
 
-    # 5. Deploy services
+    # 5. Deploy shared resources (JWT config/secret used by multiple services)
+    if [ -d "$K8S_DIR/shared" ]; then
+        log_info "Deploying shared resources..."
+        kubectl apply -f "$K8S_DIR/shared/"
+    fi
+
+    # 6. Deploy services
     for service in auth-service reminder-service todo-service sharing-service notes-service; do
         if [ -d "$K8S_DIR/$service" ]; then
             log_info "Deploying $service..."

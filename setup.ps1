@@ -130,7 +130,18 @@ function Install-Manifests {
         Write-Warn "Migrations folder not found. Skipping migrations."
     }
 
-    # 5. Deploy services
+    # 5. Deploy shared resources (JWT config/secret used by multiple services)
+    $sharedPath = Join-Path $K8sDir "shared"
+
+    if (Test-Path $sharedPath) {
+        Write-Info "Deploying shared resources..."
+
+        Invoke-Checked {
+            kubectl apply -f $sharedPath
+        } "Failed to deploy shared resources"
+    }
+
+    # 6. Deploy services
     $services = @(
         "auth-service",
         "reminder-service",

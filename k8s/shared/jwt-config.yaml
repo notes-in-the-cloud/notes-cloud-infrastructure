@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jwt-config
+  namespace: notes-cloud
+  labels:
+    app.kubernetes.io/part-of: notes-cloud-platform
+data:
+  JWT_ISSUER: "notes-cloud"
+  JWT_AUDIENCE: "notes-cloud"
+  JWT_TTL: "15m"
