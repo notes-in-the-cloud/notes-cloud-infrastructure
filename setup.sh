@@ -108,4 +108,8 @@ main() {
     wait_for_deployments
     show_status
 
-    log
+    log_info "Setup complete!"
+}
+
+# Run
+main "$@"
