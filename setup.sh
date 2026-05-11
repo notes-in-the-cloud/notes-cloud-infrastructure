@@ -55,7 +55,7 @@ apply_manifests() {
 
     # 3. Wait for Postgres to be ready
     log_info "Waiting for Postgres to be ready..."
-    kubectl wait --for=condition=ready pod -l app=postgres -n notes-cloud --timeout=120s || true
+    kubectl wait --for=condition=ready pod -l app=postgres -n notes-cloud --timeout=300s || true
 
     # 4. Run migrations
     log_info "Running migrations..."

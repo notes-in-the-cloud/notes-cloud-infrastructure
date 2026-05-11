@@ -111,7 +111,7 @@ function Install-Manifests {
     # 3. Wait for Postgres to be ready
     Write-Info "Waiting for Postgres to be ready..."
 
-    kubectl wait --for=condition=ready pod -l app=postgres -n $Namespace --timeout=120s
+    kubectl wait --for=condition=ready pod -l app=postgres -n $Namespace --timeout=300s
 
     if ($LASTEXITCODE -ne 0) {
         Write-Warn "Postgres may not be ready yet. Check with: kubectl get pods -n $Namespace"
