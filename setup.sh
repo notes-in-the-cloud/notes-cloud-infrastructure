@@ -35,7 +35,10 @@ create_cluster() {
         log_info "Cluster '$CLUSTER_NAME' already exists"
     else
         log_info "Creating k3d cluster '$CLUSTER_NAME'..."
-        k3d cluster create "$CLUSTER_NAME" --agents 2
+        k3d cluster create "$CLUSTER_NAME" \
+            --agents 2 \
+            -p "8080:30080@loadbalancer" \
+            -p "8090:30090@loadbalancer"
     fi
 
     kubectl config use-context "k3d-$CLUSTER_NAME"
@@ -94,8 +97,13 @@ show_status() {
     echo ""
     kubectl get svc -n notes-cloud
     echo ""
-    log_info "To access a service, run:"
-    echo "  kubectl port-forward -n notes-cloud svc/<service-name> <local-port>:<service-port>"
+    log_info "Frontend and gateway access:"
+    echo "  Frontend: http://localhost:8080"
+    echo "  Gateway:  http://localhost:8090"
+    echo ""
+    log_info "If NodePort mapping is unavailable, use:"
+    echo "  kubectl port-forward -n notes-cloud svc/frontend 8080:8080"
+    echo "  kubectl port-forward -n notes-cloud svc/api-gateway 8090:8090"
 }
 
 # Main

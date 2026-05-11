@@ -8,11 +8,12 @@ metadata:
     app.kubernetes.io/name: api-gateway
     app.kubernetes.io/part-of: notes-cloud-platform
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: api-gateway
   ports:
     - name: http
       port: 8090
       targetPort: 8090
+      nodePort: 30090
       protocol: TCP

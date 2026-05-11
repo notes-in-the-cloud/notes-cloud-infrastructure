@@ -74,6 +74,8 @@ function New-Cluster {
             k3d cluster create $ClusterName `
                 --agents 2 `
                 --api-port "127.0.0.1:$ApiPort" `
+                -p "8080:30080@loadbalancer" `
+                -p "8090:30090@loadbalancer" `
                 --wait `
                 --timeout 120s
         } "Failed to create k3d cluster '$ClusterName'"
@@ -190,11 +192,14 @@ function Show-Status {
     kubectl get svc -n $Namespace
     Write-Host ""
 
-    Write-Info "To access a service, run:"
-    Write-Host "  kubectl port-forward -n $Namespace svc/<service-name> <local-port>:<service-port>"
+    Write-Info "Frontend and gateway access:"
+    Write-Host "  Frontend: http://localhost:8080"
+    Write-Host "  Gateway:  http://localhost:8090"
     Write-Host ""
-    Write-Info "Example:"
-    Write-Host "  kubectl port-forward -n $Namespace svc/auth-service 8080:8080"
+
+    Write-Info "If NodePort mapping is unavailable, use:"
+    Write-Host "  kubectl port-forward -n $Namespace svc/frontend 8080:8080"
+    Write-Host "  kubectl port-forward -n $Namespace svc/api-gateway 8090:8090"
 }
 
 # Main
