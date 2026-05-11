@@ -29,9 +29,15 @@ spec:
               containerPort: 8080
               protocol: TCP
 
+          volumeMounts:
+            - name: frontend-config
+              mountPath: /usr/share/nginx/html/config.js
+              subPath: config.js
+              readOnly: true
+
           readinessProbe:
             httpGet:
-              path: /health
+              path: /
               port: 8080
             initialDelaySeconds: 5
             periodSeconds: 10
@@ -40,7 +46,7 @@ spec:
 
           livenessProbe:
             httpGet:
-              path: /health
+              path: /
               port: 8080
             initialDelaySeconds: 15
             periodSeconds: 20
@@ -54,3 +60,8 @@ spec:
             limits:
               cpu: 250m
               memory: 256Mi
+
+      volumes:
+        - name: frontend-config
+          configMap:
+            name: frontend-config

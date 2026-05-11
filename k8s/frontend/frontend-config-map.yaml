@@ -10,6 +10,7 @@ metadata:
 data:
   config.js: |
     window.__APP_CONFIG__ = {
-        API_BASE_URL: "http://gateway-service:8090",
-        WS_REMINDERS_URL: "ws://gateway-service:8090/ws/reminders"
+        API_BASE_URL: "http://localhost:8090/api/v1",
+        GATEWAY_BASE_URL: "http://localhost:8090",
+        WS_REMINDERS_URL: "ws://localhost:8090/ws"
     };
