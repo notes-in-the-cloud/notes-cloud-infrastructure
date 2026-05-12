@@ -13,6 +13,6 @@ data:
   DB_HOST: "postgres"
   DB_PORT: "5432"
   POSTGRES_DB: "notes_cloud"
-  POSTGRES_USER: "notes_cloud_user"
+  DB_USER: "notes_cloud_user"
 
   SPRING_JPA_HIBERNATE_DDL_AUTO: "validate"
