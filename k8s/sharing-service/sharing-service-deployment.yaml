@@ -37,16 +37,16 @@ spec:
 
           readinessProbe:
             httpGet:
-              path: /actuator/health
+              path: /readyz
               port: 8083
-            initialDelaySeconds: 20
+            initialDelaySeconds: 15
             periodSeconds: 10
             timeoutSeconds: 3
             failureThreshold: 3
 
           livenessProbe:
             httpGet:
-              path: /actuator/health/liveness
+              path: /healthz
               port: 8083
             initialDelaySeconds: 30
             periodSeconds: 20
