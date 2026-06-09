@@ -10,7 +10,7 @@ metadata:
 data:
   config.js: |
     window.__APP_CONFIG__ = {
-        API_BASE_URL: "http://localhost:8090/api/v1",
-        GATEWAY_BASE_URL: "http://localhost:8090",
-        WS_REMINDERS_URL: "ws://localhost:8090/ws"
+        API_BASE_URL: "https://api.notes-cloud.org/api/v1",
+        GATEWAY_BASE_URL: "https://api.notes-cloud.org",
+        WS_REMINDERS_URL: "wss://api.notes-cloud.org/ws"
     };
