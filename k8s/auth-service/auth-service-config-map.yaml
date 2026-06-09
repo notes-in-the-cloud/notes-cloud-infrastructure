@@ -23,18 +23,18 @@ data:
   OIDC_GOOGLE_ENABLED: "true"
   OIDC_GOOGLE_PROVIDER_TYPE: "google"
   OIDC_GOOGLE_ISSUER_URL: "https://accounts.google.com"
-  OIDC_GOOGLE_REDIRECT_URL: "http://localhost:8090/api/v1/auth/google/callback"
+  OIDC_GOOGLE_REDIRECT_URL: "https://api.notes-cloud.org/api/v1/auth/google/callback"
   OIDC_GOOGLE_SCOPES: "openid,email,profile"
 
   # GitLab (OIDC)
   OIDC_GITLAB_ENABLED: "true"
   OIDC_GITLAB_PROVIDER_TYPE: "gitlab"
   OIDC_GITLAB_ISSUER_URL: "https://gitlab.com"
-  OIDC_GITLAB_REDIRECT_URL: "http://localhost:8090/api/v1/auth/gitlab/callback"
+  OIDC_GITLAB_REDIRECT_URL: "https://api.notes-cloud.org/api/v1/auth/gitlab/callback"
   OIDC_GITLAB_SCOPES: "openid,email,profile"
 
   # ----- Email service -----
   RESEND_FROM_EMAIL: "Notes Cloud <no-reply@notes-cloud.org>"
 
   # ----- Frontend -----
-  FRONTEND_URL: "http://localhost:8080"
+  FRONTEND_URL: "https://notes-cloud.org"
