@@ -38,3 +38,7 @@ data:
 
   # ----- Frontend -----
   FRONTEND_URL: "https://notes-cloud.org"
+
+  # ----- Cookies -----
+  COOKIE_DOMAIN: ".notes-cloud.org"
+  COOKIE_SECURE: "true"
